@@ -5,9 +5,24 @@
 
     {{ form(formArret) }}
 
-    {% if arret is defined %}
-        {{ dump(arret) }}
-        {{ arret|first }}
+    <h1>Arret: {{ formArret.vars.data.nomArret }}</h1>
+
+    {% if dataSens0 is defined %}
+        <h2>Destination: {{ dataSens0|first.destination }}</h2>
+        {% for d in dataSens0 %}
+            <ul>
+                <li>Prochaine Arrivée: {{ d.arrivee|date('H:m:s') }}</li>
+            </ul>
+        {% endfor %}
+    {% endif %}
+
+    {% if dataSens1 is defined %}
+        <h2>Destination: {{ dataSens1|first.destination }}</h2>
+        {% for d in dataSens1 %}
+            <ul>
+                <li>Arrivée: {{ d.arrivee|date('H:m:s') }}</li>
+            </ul>
+        {% endfor %}
     {% endif %}
 
 {% endblock %}

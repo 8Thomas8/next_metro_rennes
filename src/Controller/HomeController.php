@@ -40,15 +40,32 @@ class HomeController extends AbstractController
         $search = new Arret();
         $formArret = $this->createForm(ArretForm::class, $search);
         $formArret->handleRequest($request);
-        $arret = new Arret();
+
+        $dataSens0 = [];
+        $dataSens1 = [];
 
         if ($formArret->isSubmitted()) {
-            $arret = (Array) $formArret->getData();
+            $arretInfoManager = new ArretInfoManager();
+            $dataResponse = array($arretInfoManager->getData($search->getNomArret()))[0];
+            $records = array_column(array($dataResponse), 'records')[0];
+
+            foreach ($records as $e) {
+                $data = array_column(array($e), 'fields')[0];
+                $dataArray = (array) $data;
+
+                if ($dataArray["sens"] == 0) {
+                    array_push($dataSens0, $dataArray);
+                } else if ($dataArray["sens"] == 1) {
+                    array_push($dataSens1, $dataArray);
+                }
+            }
         }
 
         return new Response($this->twig->render('pages/home.html.twig', [
-            'arret' => $arret,
-            'formArret' => $formArret->createView()]));
+            'formArret' => $formArret->createView(),
+            'dataSens0' => $dataSens0,
+            'dataSens1' => $dataSens1
+        ]));
     }
 
 }

@@ -27,6 +27,17 @@ class Arret
     private string $error;
 
     /**
+     * Arret constructor.
+     * @param string $nomArret
+     * @param DateTime $arrivee
+     * @param string $destination
+     * @param string $error
+     */
+    public function __construct()
+    {
+    }
+
+    /**
      * @return string
      */
     public function getError(): string
