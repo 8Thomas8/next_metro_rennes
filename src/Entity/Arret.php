@@ -9,17 +9,40 @@ class Arret
     /**
      * @var string
      */
-    private $nomArret;
+    private string $nomArret;
 
     /**
      * @var DateTime
      */
-    private $arrivee;
+    private DateTime $arrivee;
 
     /**
      * @var string
      */
-    private $destination;
+    private string $destination;
+
+    /**
+     * @var string
+     */
+    private string $error;
+
+    /**
+     * @return string
+     */
+    public function getError(): string
+    {
+        return $this->error;
+    }
+
+    /**
+     * @param string $error
+     * @return Arret
+     */
+    public function setError(string $error): Arret
+    {
+        $this->error = $error;
+        return $this;
+    }
 
     /**
      * @return string
