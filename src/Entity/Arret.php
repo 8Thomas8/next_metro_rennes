@@ -28,10 +28,6 @@ class Arret
 
     /**
      * Arret constructor.
-     * @param string $nomArret
-     * @param DateTime $arrivee
-     * @param string $destination
-     * @param string $error
      */
     public function __construct()
     {
