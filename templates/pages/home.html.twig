@@ -1,14 +1,18 @@
-{% extends'base.html.twig' %}
+{% extends 'base.html.twig' %}
+
+{% block header %}
+    {% include 'components/header.html.twig' %}
+{% endblock %}
 
 {% block body %}
-    {{ dump() }}
+    {# {{ dump() }} #}
 
     {{ form(formArret) }}
 
     {% if formArret.vars.submitted %}
         <h1>Arret: {{ formArret.vars.data.nomArret }}</h1>
     {% endif %}
-    
+
     {% if dataSens0|length != 0 %}
         <h2>Destination: {{ dataSens0|first['destination'] }}</h2>
         {% for d in dataSens0 %}

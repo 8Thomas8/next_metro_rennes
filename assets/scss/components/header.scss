@@ -1,0 +1,68 @@
+@import '../global';
+
+header {
+  max-width: 100%;
+  height: 80px;
+  background-image: -webkit-gradient(
+                  linear,
+                  left top,
+                  left bottom,
+                  color-stop(0.7, #FFFFFF),
+                  color-stop(0.92, #DBDBDB)
+  );
+  box-shadow: 0 0 6px black;
+  display: flex;
+  padding: 0 30px;
+
+  .header-left {
+    display: flex;
+    align-items: center;
+
+    .logo-container {
+      width: 50px;
+      height: 55px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+
+    .site-title {
+      padding-left: 15px;
+      font-weight: bold;
+      font-size: 25px;
+      color: #2a2a7c
+    }
+  }
+
+  .header-right {
+    margin: 0 0 0 auto;
+    display: flex;
+    align-items: center;
+
+    .about-button {
+      height: 50px;
+      width: 150px;
+      border-radius: 10px;
+      border: none;
+      background: #4A4A4A;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      transition: all, 0.2s;
+
+      &:hover, &:focus {
+        background: #2a2a7c;
+        cursor: pointer;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+
+}
