@@ -10,6 +10,7 @@ import '../scss/global.scss';
 import '../scss/pages/base.scss';
 import '../scss/components/header.scss';
 import '../scss/components/footer.scss';
+import '../scss/pages/home.scss';
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to import it.
 // import $ from 'jquery';

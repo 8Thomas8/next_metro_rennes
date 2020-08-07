@@ -7,30 +7,53 @@
 {% block body %}
     {# {{ dump() }} #}
 
-    {{ form(formArret) }}
+    {# {{ form(formArret) }} #}
 
-    {% if formArret.vars.submitted %}
-        <h1>Arret: {{ formArret.vars.data.nomArret }}</h1>
-    {% endif %}
+    {# {% if formArret.vars.submitted %} #}
+    {# <h1>Arret: {{ formArret.vars.data.nomArret }}</h1> #}
+    {# {% endif %} #}
 
-    {% if dataSens0|length != 0 %}
-        <h2>Destination: {{ dataSens0|first['destination'] }}</h2>
-        {% for d in dataSens0 %}
-            <ul>
-                <li>Prochaine Arrivée: {{ d.arrivee }}</li>
-            </ul>
-        {% endfor %}
-    {% endif %}
+    {# {% if dataSens0|length != 0 %} #}
+    {# <h2>Destination: {{ dataSens0|first['destination'] }}</h2> #}
+    {# {% for d in dataSens0 %} #}
+    {# <ul> #}
+    {# <li>Prochaine Arrivée: {{ d.arrivee }}</li> #}
+    {# </ul> #}
+    {# {% endfor %} #}
+    {# {% endif %} #}
 
-    {% if dataSens1|length != 0 %}
-        <h2>Destination: {{ dataSens1|first['destination'] }}</h2>
-        {% for d in dataSens1 %}
-            <ul>
-                <li>Arrivée: {{ d.arrivee }}</li>
-            </ul>
-        {% endfor %}
-    {% endif %}
+    {# {% if dataSens1|length != 0 %} #}
+    {# <h2>Destination: {{ dataSens1|first['destination'] }}</h2> #}
+    {# {% for d in dataSens1 %} #}
+    {# <ul> #}
+    {# <li>Arrivée: {{ d.arrivee }}</li> #}
+    {# </ul> #}
+    {# {% endfor %} #}
+    {# {% endif %} #}
 
+    <section>
+        <form>
+            <select>
+                <option>Choisissez votre station</option>
+                <option>Jacques Cartier</option>
+            </select>
+            <button type="submit">Go !</button>
+        </form>
+
+        <div class="card-content">
+            <span class="info-title">Station Jacques Cartier</span>
+
+            <div class="info-left">
+                <span>Direction La Poterie</span>
+                <span>Prochaine arrivée dans: 02m 34s</span>
+            </div>
+
+            <div class="info-right">
+                <span>Direction La Poterie</span>
+                <span>Prochaine arrivée dans: 02m 34s</span>
+            </div>
+        </div>
+    </section>
 {% endblock %}
 
 {% block footer %}
