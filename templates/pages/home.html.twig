@@ -5,52 +5,44 @@
 {% endblock %}
 
 {% block body %}
-    {# {{ dump() }} #}
-
-    {# {{ form(formArret) }} #}
-
-    {# {% if formArret.vars.submitted %} #}
-    {# <h1>Arret: {{ formArret.vars.data.nomArret }}</h1> #}
-    {# {% endif %} #}
-
-    {# {% if dataSens0|length != 0 %} #}
-    {# <h2>Destination: {{ dataSens0|first['destination'] }}</h2> #}
-    {# {% for d in dataSens0 %} #}
-    {# <ul> #}
-    {# <li>Prochaine Arrivée: {{ d.arrivee }}</li> #}
-    {# </ul> #}
-    {# {% endfor %} #}
-    {# {% endif %} #}
-
-    {# {% if dataSens1|length != 0 %} #}
-    {# <h2>Destination: {{ dataSens1|first['destination'] }}</h2> #}
-    {# {% for d in dataSens1 %} #}
-    {# <ul> #}
-    {# <li>Arrivée: {{ d.arrivee }}</li> #}
-    {# </ul> #}
-    {# {% endfor %} #}
-    {# {% endif %} #}
+    {{ dump() }}
 
     <section>
-        <form>
-            <select>
-                <option>Choisissez votre station</option>
-                <option>Jacques Cartier</option>
-            </select>
-            <button type="submit">Go !</button>
-        </form>
+        {{ form(formArret) }}
 
         <div class="card-content">
-            <span class="info-title">Station Jacques Cartier</span>
+            <span class="info-title">Station
+                {% if formArret.vars.submitted %}
+                    {{ formArret.vars.data.nomArret }}
+                {% endif %}
+            </span>
 
             <div class="info-left">
-                <span>Direction La Poterie</span>
-                <span>Prochaine arrivée dans: 02m 34s</span>
+                <span>Direction J.F. Kennedy</span>
+
+                {% if (nextArret0.arrivee is not empty) %}
+                    <span>Prochaine arrivée à :
+                        {{ nextArret0.arrivee }}
+                </span>
+                    {# <span>Prochaine arrivée dans: {{ dataSens0|first['arrivee']|time_diff }}</span> #}
+                {% else %}
+                    <span>Pas de données pour le moment</span>
+                {% endif %}
             </div>
 
             <div class="info-right">
                 <span>Direction La Poterie</span>
-                <span>Prochaine arrivée dans: 02m 34s</span>
+
+                {% if (nextArret1.arrivee is not empty) %}
+                    <span>Prochaine arrivée à :
+                    {% if dataSens1|length != 0 %}
+                        {{ dataSens1|first['arrivee'] }}
+                    {% endif %}
+                </span>
+                    <span>Prochaine arrivée dans : 02m 34s</span>
+                {% else %}
+                    <span>Pas de données pour le moment</span>
+                {% endif %}
             </div>
         </div>
     </section>

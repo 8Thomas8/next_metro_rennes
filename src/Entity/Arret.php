@@ -2,8 +2,6 @@
 
 namespace App\Entity;
 
-use Symfony\Component\Validator\Constraints\DateTime;
-
 class Arret
 {
     /**
@@ -12,9 +10,9 @@ class Arret
     private string $nomArret;
 
     /**
-     * @var DateTime
+     * @var string
      */
-    private DateTime $arrivee;
+    private string $arrivee;
 
     /**
      * @var string
@@ -25,6 +23,29 @@ class Arret
      * @var string
      */
     private string $error;
+
+    /**
+     * @var int
+     */
+    private int $diff;
+
+    /**
+     * @return int
+     */
+    public function getDiff(): int
+    {
+        return $this->diff;
+    }
+
+    /**
+     * @param int $diff
+     * @return Arret
+     */
+    public function setDiff(int $diff): Arret
+    {
+        $this->diff = $diff;
+        return $this;
+    }
 
     /**
      * Arret constructor.
@@ -70,18 +91,18 @@ class Arret
     }
 
     /**
-     * @return DateTime
+     * @return string
      */
-    public function getArrivee(): DateTime
+    public function getArrivee(): string
     {
         return $this->arrivee;
     }
 
     /**
-     * @param DateTime $arrivee
+     * @param string $arrivee
      * @return Arret
      */
-    public function setArrivee(DateTime $arrivee): Arret
+    public function setArrivee(string $arrivee): Arret
     {
         $this->arrivee = $arrivee;
         return $this;
