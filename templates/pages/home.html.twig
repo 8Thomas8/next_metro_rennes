@@ -34,11 +34,7 @@
                 <span>Direction La Poterie</span>
 
                 {% if (nextArret1.arrivee is not empty) %}
-                    <span>Prochaine arrivée à :
-                    {% if dataSens1|length != 0 %}
-                        {{ dataSens1|first['arrivee'] }}
-                    {% endif %}
-                </span>
+                    <span>Prochaine arrivée à : {{ nextArret1.arrivee }} </span>
                     <span>Prochaine arrivée dans : 02m 34s</span>
                 {% else %}
                     <span>Pas de données pour le moment</span>
