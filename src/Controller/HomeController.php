@@ -97,6 +97,12 @@ class HomeController extends AbstractController
 
         }
 
+        dump($formArret);
+        dump($dataSens0);
+        dump($dataSens1);
+        dump($nextArret0);
+        dump($nextArret1);
+
         return new Response($this->twig->render('pages/home.html.twig', [
             'formArret' => $formArret->createView(),
             '$dataSens0' => $dataSens0,
