@@ -18,11 +18,11 @@
             <div class="info-left">
                 <span>Direction J.F. Kennedy</span>
 
-                {% if (nextArret0.arrivee is not empty) %}
-                    <span>Prochaine arrivée à :
-                        {{ nextArret0.arrivee }}
+                {% if (nextArret0.depart is not empty) %}
+                    <span>Prochaine départ à :
+                        {{ nextArret0.depart }}
                 </span>
-                    {# <span>Prochaine arrivée dans: {{ dataSens0|first['arrivee']|time_diff }}</span> #}
+                    {# <span>Prochaine départ dans: {{ dataSens0|first['depart']|time_diff }}</span> #}
                 {% else %}
                     <span>Pas de données pour le moment</span>
                 {% endif %}
@@ -31,9 +31,9 @@
             <div class="info-right">
                 <span>Direction La Poterie</span>
 
-                {% if (nextArret1.arrivee is not empty) %}
-                    <span>Prochaine arrivée à : {{ nextArret1.arrivee }} </span>
-                    <span>Prochaine arrivée dans : 02m 34s</span>
+                {% if (nextArret1.depart is not empty) %}
+                    <span>Prochaine départ à : {{ nextArret1.depart }} </span>
+                    <span>Prochaine départ dans : 02m 34s</span>
                 {% else %}
                     <span>Pas de données pour le moment</span>
                 {% endif %}

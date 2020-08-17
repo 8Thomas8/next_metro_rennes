@@ -12,7 +12,7 @@ class Arret
     /**
      * @var string
      */
-    private string $arrivee;
+    private string $depart;
 
     /**
      * @var string
@@ -93,18 +93,18 @@ class Arret
     /**
      * @return string
      */
-    public function getArrivee(): string
+    public function getDepart(): string
     {
-        return $this->arrivee;
+        return $this->depart;
     }
 
     /**
-     * @param string $arrivee
+     * @param string $depart
      * @return Arret
      */
-    public function setArrivee(string $arrivee): Arret
+    public function setDepart(string $depart): Arret
     {
-        $this->arrivee = $arrivee;
+        $this->depart = $depart;
         return $this;
     }
 
