@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use DateTime;
+
 class Arret
 {
     /**
@@ -10,9 +12,9 @@ class Arret
     private string $nomArret;
 
     /**
-     * @var string
+     * @var DateTime
      */
-    private string $depart;
+    private DateTime $depart;
 
     /**
      * @var string
@@ -91,18 +93,18 @@ class Arret
     }
 
     /**
-     * @return string
+     * @return DateTime
      */
-    public function getDepart(): string
+    public function getDepart(): DateTime
     {
         return $this->depart;
     }
 
     /**
-     * @param string $depart
+     * @param DateTime $depart
      * @return Arret
      */
-    public function setDepart(string $depart): Arret
+    public function setDepart(DateTime $depart): Arret
     {
         $this->depart = $depart;
         return $this;
