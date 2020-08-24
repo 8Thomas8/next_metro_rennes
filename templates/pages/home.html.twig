@@ -18,7 +18,7 @@
             <div class="info-left">
                 <span>Direction J.F. Kennedy</span>
 
-                {% if (nextDepart0.depart is not empty) %}
+                {% if (nextDepart0.destination | length > 0) %}
                     <span>Prochain départ à :
                         {{ nextDepart0.depart | date("H:i:s", "Europe/Paris") }}
                     </span>
@@ -31,7 +31,7 @@
             <div class="info-right">
                 <span>Direction La Poterie</span>
 
-                {% if (nextDepart1.depart is not empty) %}
+                {% if (nextDepart1.destination | length > 0) %}
                     <span>Prochain départ à :
                         {{ nextDepart1.depart | date("H:i:s", "Europe/Paris") }}
                     </span>
