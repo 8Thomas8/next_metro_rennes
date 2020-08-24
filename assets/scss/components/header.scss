@@ -68,15 +68,14 @@ header {
           color: $color01;
           font-size: 24px;
           transition: all, 0.2s;
-          border-radius: 10px;
-          border: 1px transparent solid;
+          border-bottom: 3px transparent solid;
           padding: 5px;
           cursor: pointer;
           text-decoration: none;
 
           &:hover, &:focus {
             color: darken($color01, 10%);
-            border: 1px darken($color01, 10%) solid;
+            border-bottom: 3px $color03 solid;
 
           }
 
