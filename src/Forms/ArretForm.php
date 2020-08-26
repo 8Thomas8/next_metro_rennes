@@ -16,7 +16,7 @@ class ArretForm extends AbstractType
         $builder
             ->add('nomArret', ChoiceType::class, [
                 'choices' => [
-                    'Choisissez une station' => '-1',
+                    'Clique ici pour choisir !' => '-1',
                     'J.F. Kennedy' => 'J.F. Kennedy',
                     'Italie' => 'Italie',
                     'Anatole France' => 'Anatole France',
