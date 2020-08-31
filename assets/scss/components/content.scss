@@ -15,6 +15,7 @@
     width: 55%;
     border-radius: 5px;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+    border-bottom: 10px #627AF3 solid;
 
     &-title {
       font-size: 36px;
@@ -36,11 +37,28 @@
     form {
       display: flex;
       justify-content: center;
-      margin-top: 75px;
+      margin-top: 115px;
 
       select {
-        width: 370px;
-        height: 50px;
+        width: 600px;
+        height: 80px;
+        border: 1px #D2D2D2 solid;
+        border-radius: 5px;
+        background: rgba(210, 210, 210, 0.5) url('/build/images/form/chevron.svg') no-repeat;
+        background-position-x: 97%;
+        background-position-y: 24px;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        appearance: none;
+        padding-left: 10px;
+        font-size: 36px;
+        font-weight: bold;
+        color: #7d7d7d;
+
+        option {
+          padding: 5px 5px;
+          border-bottom: 1px #D2D2D2 solid;
+        }
       }
     }
   }

@@ -1,3 +1,7 @@
+{% block stylesheets %}
+    {{ encore_entry_link_tags('content') }}
+{% endblock %}
+
 {% block body %}
     <section class="content-container">
 
@@ -13,6 +17,9 @@
     </section>
 {% endblock %}
 
+{% block javascripts %}
+    {{ encore_entry_script_tags('content') }}
+{% endblock %}
 {# {{ form(formArret) }}#}
 {# <span class="info-title">Station #}
 {# {% if formArret.vars.submitted %} #}

@@ -37,11 +37,6 @@ class ArretForm extends AbstractType
                 'label' => false,
                 'attr' => [
                     'placeholder' => 'Nom de la station']
-            ])
-            ->add('send', SubmitType::class, [
-                'attr' => [
-                    'class' => 'submit_button'
-                ]
             ]);
     }
 
