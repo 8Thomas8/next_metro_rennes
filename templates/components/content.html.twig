@@ -5,14 +5,62 @@
 {% block body %}
     <section class="content-container">
 
-        <div class="card-content">
+        {% if formArret.vars.submitted == false %}
+            <div class="card-content">
 
-            <h1 class="card-content-title">Choisis ta station !</h1>
+                <h1 class="card-content-title">Choisis ta station !</h1>
 
-             {{ form(formArret, { 'attr': {'class': 'first-form'} }) }}
+                {{ form(formArret, { 'attr': {'class': 'first-form'} }) }}
 
-        </div>
+            </div>
+        {% else %}
+            <div class="card-content">
 
+                <h1 class="card-content-title">Station <span
+                            class="station-name">{{ formArret.vars.data.nomArret }}</span>
+                    <a href="#" title="Changer de station" id="edit-link">
+                        <img src="/build/images/content/edit.svg" alt="Picto édition">
+                    </a>
+                </h1>
+
+                <div class="result-container">
+                    <div class="left">
+                        <span class="result-block">
+                            <span class="result-block__title">Direction</span>
+                            <span class="result-block__item">J.F. Kennedy</span>
+                        </span>
+                        <span class="result-block">
+                            <span class="result-block__title">Départ à</span>
+                            <span class="result-block__item">{{ nextDepart0.depart | date("H:i:s", "Europe/Paris") }}</span>
+                        </span>
+                        <span class="result-block">
+                            <span class="result-block__title">Temps restant</span>
+                            <span class="result-block__item">{{ nextDepart0.diff | date('m:s') }}</span>
+                        </span>
+                    </div>
+
+                    <div class="spacer">
+                    </div>
+
+                    <div class="right">
+                        <span class="result-block">
+                            <span class="result-block__title">Direction</span>
+                            <span class="result-block__item">La Poterie</span>
+                        </span>
+                        <span class="result-block">
+                            <span class="result-block__title">Départ à</span>
+                            <span class="result-block__item">{{ nextDepart1.depart | date("H:i:s", "Europe/Paris") }}</span>
+                        </span>
+                        <span class="result-block">
+                            <span class="result-block__title">Temps restant</span>
+                            <span class="result-block__item">{{ nextDepart1.diff | date('m:s') }}</span>
+                        </span>
+                    </div>
+                </div>
+
+
+            </div>
+        {% endif %}
         </div>
     </section>
 {% endblock %}
@@ -20,7 +68,7 @@
 {% block javascripts %}
     {{ encore_entry_script_tags('content') }}
 {% endblock %}
-{# {{ form(formArret) }}#}
+{# {{ form(formArret) }} #}
 {# <span class="info-title">Station #}
 {# {% if formArret.vars.submitted %} #}
 {# {{ formArret.vars.data.nomArret }} #}
@@ -50,4 +98,4 @@
 {# <span>Prochain départ dans: {{ nextDepart1.diff | date('m:s') }}</span> #}
 {# {% else %} #}
 {# <span>Pas de données pour le moment</span> #}
-{# {% endif %}#}
+{# {% endif %}      #}

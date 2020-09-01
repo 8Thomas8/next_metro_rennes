@@ -16,5 +16,10 @@ $().ready(() => {
     $('select').change(() => {
             $('form').submit();
         }
-    )
+    );
+
+    // Gestion du bouton de changement de station
+    $('#edit-link').click(() => {
+        window.history.back();
+    });
 })
