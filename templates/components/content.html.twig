@@ -7,95 +7,52 @@
 
         {% if formArret.vars.submitted == false %}
             <div class="card-content">
+                {{ form_start(formArret) }}
+                <div class="first-step">
+                    <h1 class="card-content-title">Choisis ta station !</h1>
+                    <div class="form">
+                        {{ form_widget(formArret.nomArret, { 'attr': {'class': 'first-input'} }) }}
+                    </div>
+                </div>
 
-                <h1 class="card-content-title">Choisis ta station !</h1>
-
-                {{ form(formArret, { 'attr': {'class': 'first-form'} }) }}
-
+                <div class="second-step">
+                    <h1 class="card-content-title">Choisis ta destination !</h1>
+                    <div class="form">
+                        {{ form_widget(formArret.destination, { 'attr': {'class': 'second-input'} }) }}
+                    </div>
+                </div>
+                {{ form_end(formArret) }}
             </div>
+
+
         {% else %}
             <div class="card-content">
 
                 <h1 class="card-content-title">Station <span
-                            class="station-name">{{ formArret.vars.data.nomArret }}</span>
+                            class="station-name">{{ depart.nomArret }}</span>
                     <a href="#" title="Changer de station" id="edit-link">
                         <img src="/build/images/content/edit.svg" alt="Picto édition">
                     </a>
                 </h1>
 
                 <div class="result-container">
-                    <div class="left">
-                        <span class="result-block">
-                            <span class="result-block__title">Direction</span>
-                            <span class="result-block__item">J.F. Kennedy</span>
-                        </span>
-                        <span class="result-block">
-                            <span class="result-block__title">Départ à</span>
-                            <span class="result-block__item">{{ nextDepart0.depart | date("H:i:s", "Europe/Paris") }}</span>
-                        </span>
+                    <div class="result-content">
+                         <span class="result-block">
+                             <span class="result-block__title">Direction</span>
+                             <span class="result-block__item">{{ depart.destination }}</span>
+                         </span>
                         <span class="result-block">
                             <span class="result-block__title">Temps restant</span>
-                            <span class="result-block__item">{{ nextDepart0.diff | date('m:s') }}</span>
-                        </span>
-                    </div>
-
-                    <div class="spacer">
-                    </div>
-
-                    <div class="right">
-                        <span class="result-block">
-                            <span class="result-block__title">Direction</span>
-                            <span class="result-block__item">La Poterie</span>
-                        </span>
-                        <span class="result-block">
-                            <span class="result-block__title">Départ à</span>
-                            <span class="result-block__item">{{ nextDepart1.depart | date("H:i:s", "Europe/Paris") }}</span>
-                        </span>
-                        <span class="result-block">
-                            <span class="result-block__title">Temps restant</span>
-                            <span class="result-block__item">{{ nextDepart1.diff | date('m:s') }}</span>
+                            <span id="time" class="result-block__item">{{ depart.diff | date('m:s') }}</span>
                         </span>
                     </div>
                 </div>
-
-
             </div>
         {% endif %}
-        </div>
+
     </section>
 {% endblock %}
 
 {% block javascripts %}
     {{ encore_entry_script_tags('content') }}
 {% endblock %}
-{# {{ form(formArret) }} #}
-{# <span class="info-title">Station #}
-{# {% if formArret.vars.submitted %} #}
-{# {{ formArret.vars.data.nomArret }} #}
-{# {% endif %} #}
-{# </span> #}
-
-{# <div class="info-left"> #}
-{# <span>Direction J.F. Kennedy</span> #}
-
-{# {% if (nextDepart0.destination | length > 0) %} #}
-{# <span>Prochain départ à : #}
-{# {{ nextDepart0.depart | date("H:i:s", "Europe/Paris") }} #}
-{# </span> #}
-{# <span>Prochain départ dans: {{ nextDepart0.diff | date('m:s') }}</span> #}
-{# {% else %} #}
-{# <span>Pas de données pour le moment</span> #}
-{# {% endif %} #}
-{# </div> #}
-
-{# <div class="info-right"> #}
-{# <span>Direction La Poterie</span> #}
-
-{# {% if (nextDepart1.destination | length > 0) %} #}
-{# <span>Prochain départ à : #}
-{# {{ nextDepart1.depart | date("H:i:s", "Europe/Paris") }} #}
-{# </span> #}
-{# <span>Prochain départ dans: {{ nextDepart1.diff | date('m:s') }}</span> #}
-{# {% else %} #}
-{# <span>Pas de données pour le moment</span> #}
-{# {% endif %}      #}
