@@ -45,7 +45,8 @@
                          </span>
                         <span class="result-block">
                             <span class="result-block__title">Temps restant</span>
-                            <span id="time" class="result-block__item">{{ depart.diff | date('m:s') }}</span>
+                            <span class="result-block__item" id="time" data-year="{{ depart.depart|date("Y", "Europe/Paris") }}" data-month="{{ depart.depart|date("m", "Europe/Paris") }}" data-day="{{ depart.depart|date("d", "Europe/Paris") }}" data-hour="{{ depart.depart|date("H", "Europe/Paris") }}" data-min="{{ depart.depart|date("i", "Europe/Paris") }}" data-sec="{{ depart.depart|date("s", "Europe/Paris") }}"></span>
+                            <span class="result-block__item too-late" id="timeTooLate">Trop tard !</span>
                         </span>
                     </div>
                 </div>

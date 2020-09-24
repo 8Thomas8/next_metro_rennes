@@ -31,36 +31,34 @@ $().ready(() => {
     });
 
     // Decompte
-    let time = $('#time')[0].innerText;
-    let min = parseInt(time.slice(0, 2));
-    let sec =  parseInt(time.slice(3, 5));
+    let timeElt = $('#time')[0];
 
-    // TODO: Besoin de la date complete
-    const countDownDate = new Date(0, 0, 0, 0, min, sec).getTime();
+    const countDownDate = new Date(parseInt(timeElt.dataset['year']), parseInt(timeElt.dataset['month']), parseInt(timeElt.dataset['day']), parseInt(timeElt.dataset['hour']), parseInt(timeElt.dataset['min']), parseInt(timeElt.dataset['sec'])).getTime();
 
-
-    let x = setInterval(function() {
+    let x = setInterval(function () {
 
         const now = new Date().getTime();
 
+        // Calcul la différence entre les 2 dates
         const distance = countDownDate - now;
+        console.log(countDownDate > now);
 
         // Calcule pour les différentes unités de temps
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        // const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        // const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        // Display the result in the element with id="demo"
-        $('#time').text(minutes + ":" + seconds);
-        // If the count down is finished, write some text
+        // Quand le compte arrive à 0, change l'affichage.
+        if ((minutes <= 0 && seconds <= 0)) {
+            clearInterval(x);
+            $('#time').css('display', 'none');
+            $('#timeTooLate').css('display', 'inline-block');
+            return;
+        }
 
-        // if (distance < 0) {
-        //     clearInterval(x);
-        //     $('#time').text("Trop tard");
-        // }
+        // Affiche le texte
+        $('#time').text((("0" + minutes).slice(-2)) + ":" + (("0" + seconds).slice(-2)));
 
     }, 1000);
-
-
 })
