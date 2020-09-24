@@ -2,16 +2,18 @@
 
 namespace App\Manager;
 
-use GuzzleHttp\Client;
-
 class ArretInfoManager
 {
     public function getData(string $nomArret, int $sens, int $rowsNumber = 10)
     {
-        $client = new Client();
+        $url = 'https://data.explore.star.fr/api/records/1.0/search/?dataset=tco-metro-circulation-passages-tr&q=&rows=' . $rowsNumber . '&lang=fr&facet=nomcourtligne&facet=sens&facet=destination&facet=nomarret&timezone=Europe%2FParis&facet=precision&refine.precision=Temps+réel&refine.nomarret=' . $nomArret . '&refine.sens=' . $sens;
+        $ch = curl_init();
 
-        $response = $client->get('https://data.explore.star.fr/api/records/1.0/search/?dataset=tco-metro-circulation-passages-tr&q=&rows=' . $rowsNumber . '&lang=fr&facet=nomcourtligne&facet=sens&facet=destination&facet=nomarret&timezone=Europe%2FParis&facet=precision&refine.precision=Temps+réel&refine.nomarret=' . $nomArret . '&refine.sens=' . $sens);
-
-        return json_decode($response->getBody());
+        // Récupérer le contenu de la page
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        //Saisir l'URL et la transmettre à la variable.
+        curl_setopt($ch, CURLOPT_URL, $url);
+        //Exécutez et retourner la requête
+        return json_decode(curl_exec($ch));
     }
 }
