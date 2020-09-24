@@ -1,0 +1,93 @@
+@import '../global';
+
+header {
+  max-width: 100%;
+  height: 66vh;
+  display: flex;
+  background-image: url('/build/images/header/background.jpg');
+  background-size: cover;
+  background-position: center;
+
+  .header-background-overlay {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: $color05;
+
+    .header-nav-container {
+      display: flex;
+      padding: 10px 45px;
+
+      .header-left {
+        display: flex;
+        align-items: center;
+        z-index: 2;
+
+        .logo-container {
+          width: 60px;
+          height: 73px;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+          }
+        }
+
+        .title-container {
+          display: flex;
+          flex-direction: column;
+          width: 225px;
+          line-height: 0.9;
+
+          .site-title {
+            padding-left: 15px;
+            font-weight: bold;
+            font-size: 36px;
+            color: $color01;
+          }
+
+          .site-subtitle {
+            font-weight: bold;
+            color: $color01;
+            font-size: 24px;
+            margin: 0 0 0 auto;
+          }
+
+          .blue {
+            color: $color03
+          }
+        }
+      }
+
+      .header-right {
+        margin: 0 0 0 auto;
+        display: flex;
+        align-items: center;
+        z-index: 2;
+
+        .about-link {
+          color: $color01;
+          font-size: 24px;
+          transition: all, 0.2s;
+          border-bottom: 3px transparent solid;
+          padding: 5px;
+          cursor: pointer;
+          text-decoration: none;
+
+          &:hover, &:focus {
+            color: darken($color01, 10%);
+            border-bottom: 3px $color03 solid;
+
+          }
+
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+
+    }
+
+  }
+}
