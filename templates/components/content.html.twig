@@ -1,0 +1,61 @@
+{% block stylesheets %}
+    {{ encore_entry_link_tags('content') }}
+{% endblock %}
+
+{% block body %}
+    <section class="content-container">
+
+        {% if formArret.vars.submitted == false %}
+            <div class="card-content">
+                {{ form_start(formArret) }}
+                <div class="first-step">
+                    <h1 class="card-content-title">Choisis ta station !</h1>
+                    <div class="form">
+                        {{ form_widget(formArret.nomArret, { 'attr': {'class': 'first-input'} }) }}
+                    </div>
+                </div>
+
+                <div class="second-step">
+                    <h1 class="card-content-title">Choisis ta destination !</h1>
+                    <div class="form">
+                        {{ form_widget(formArret.destination, { 'attr': {'class': 'second-input'} }) }}
+                    </div>
+                </div>
+                {{ form_end(formArret) }}
+            </div>
+
+
+        {% else %}
+            <div class="card-content">
+
+                <h1 class="card-content-title">Station <span
+                            class="station-name">{{ depart.nomArret }}</span>
+                    <a href="#" title="Changer de station" id="edit-link">
+                        <img src="/build/images/content/edit.svg" alt="Picto édition">
+                    </a>
+                </h1>
+
+                <div class="result-container">
+                    <span class="result-container__title">Prochain départ</span>
+
+                    <div class="result-content">
+                        <span class="result-block">
+                             <span class="result-block__title">Direction</span>
+                             <span class="result-block__item">{{ depart.destination }}</span>
+                         </span>
+                        <span class="result-block">
+                            <span class="result-block__title">Temps restant</span>
+                            <span class="result-block__item" id="time" data-year="{{ depart.depart|date("Y", "Europe/Paris") }}" data-month="{{ depart.depart|date("m", "Europe/Paris") }}" data-day="{{ depart.depart|date("d", "Europe/Paris") }}" data-hour="{{ depart.depart|date("H", "Europe/Paris") }}" data-min="{{ depart.depart|date("i", "Europe/Paris") }}" data-sec="{{ depart.depart|date("s", "Europe/Paris") }}"></span>
+                            <span class="result-block__item too-late" id="timeTooLate">Trop tard !</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('content') }}
+{% endblock %}

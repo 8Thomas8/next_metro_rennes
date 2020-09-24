@@ -3,9 +3,12 @@
 namespace App\Forms;
 
 use App\Entity\Arret;
+use App\Entity\NomArret;
+use Doctrine\DBAL\Types\StringType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -16,7 +19,7 @@ class ArretForm extends AbstractType
         $builder
             ->add('nomArret', ChoiceType::class, [
                 'choices' => [
-                    'Choisissez une station' => '-1',
+                    'Clique ici pour choisir !' => '-1',
                     'J.F. Kennedy' => 'J.F. Kennedy',
                     'Italie' => 'Italie',
                     'Anatole France' => 'Anatole France',
@@ -34,15 +37,17 @@ class ArretForm extends AbstractType
                     'Villejean-Université' => 'Villejean-Université'
                 ],
                 'required' => true,
-                'label' => false,
-                'attr' => [
-                    'placeholder' => 'Nom de la station']
+                'label' => false
             ])
-            ->add('send', SubmitType::class, [
-                'attr' => [
-                    'class' => 'submit_button'
-                ]
-            ]);
+            ->add('destination', ChoiceType::class, [
+                'choices' => [
+                    'Clique ici pour choisir !' => '-1',
+                    'J.F. Kennedy' => 'J.F. Kennedy',
+                    'La Poterie' => 'La Poterie'
+                ],
+                'required' => true,
+                'label' => false
+            ]);;
     }
 
     public function configureOptions(OptionsResolver $resolver)

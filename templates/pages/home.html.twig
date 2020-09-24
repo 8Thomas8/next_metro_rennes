@@ -5,43 +5,7 @@
 {% endblock %}
 
 {% block body %}
-    <section>
-        {{ form(formArret) }}
-
-        <div class="card-content">
-            <span class="info-title">Station
-                {% if formArret.vars.submitted %}
-                    {{ formArret.vars.data.nomArret }}
-                {% endif %}
-            </span>
-
-            <div class="info-left">
-                <span>Direction J.F. Kennedy</span>
-
-                {% if (nextDepart0.depart is not empty) %}
-                    <span>Prochain départ à :
-                        {{ nextDepart0.depart | date("H:i:s", "Europe/Paris") }}
-                    </span>
-                    <span>Prochain départ dans: {{ nextDepart0.diff | date('m:s') }}</span>
-                {% else %}
-                    <span>Pas de données pour le moment</span>
-                {% endif %}
-            </div>
-
-            <div class="info-right">
-                <span>Direction La Poterie</span>
-
-                {% if (nextDepart1.depart is not empty) %}
-                    <span>Prochain départ à :
-                        {{ nextDepart1.depart | date("H:i:s", "Europe/Paris") }}
-                    </span>
-                    <span>Prochain départ dans: {{ nextDepart1.diff | date('m:s') }}</span>
-                {% else %}
-                    <span>Pas de données pour le moment</span>
-                {% endif %}
-            </div>
-        </div>
-    </section>
+    {% include 'components/content.html.twig' %}
 {% endblock %}
 
 {% block footer %}
