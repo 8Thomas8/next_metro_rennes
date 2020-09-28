@@ -1,4 +1,3 @@
-import '../../scss/components/content.scss';
 import $ from 'jquery';
 
 $().ready(() => {
