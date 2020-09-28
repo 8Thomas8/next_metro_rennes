@@ -31,32 +31,35 @@ $().ready(() => {
 
     // Decompte
     let timeElt = $('#time')[0];
+    console.log(timeElt);
 
-    const countDownDate = new Date(parseInt(timeElt.dataset['year']), parseInt(timeElt.dataset['month']), parseInt(timeElt.dataset['day']), parseInt(timeElt.dataset['hour']), parseInt(timeElt.dataset['min']), parseInt(timeElt.dataset['sec'])).getTime();
+    if (timeElt !== undefined) {
+        const countDownDate = new Date(parseInt(timeElt.dataset['year']), parseInt(timeElt.dataset['month']), parseInt(timeElt.dataset['day']), parseInt(timeElt.dataset['hour']), parseInt(timeElt.dataset['min']), parseInt(timeElt.dataset['sec'])).getTime();
 
-    let x = setInterval(function () {
+        let x = setInterval(function () {
 
-        const now = new Date().getTime();
+            const now = new Date().getTime();
 
-        // Calcul la différence entre les 2 dates
-        const distance = countDownDate - now;
+            // Calcul la différence entre les 2 dates
+            const distance = countDownDate - now;
 
-        // Calcule pour les différentes unités de temps
-        // const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        // const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            // Calcule pour les différentes unités de temps
+            // const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            // const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        // Quand le compte arrive à 0, change l'affichage.
-        if ((minutes <= 0 && seconds <= 0)) {
-            clearInterval(x);
-            $('#time').css('display', 'none');
-            $('#timeTooLate').css('display', 'inline-block');
-            return;
-        }
+            // Quand le compte arrive à 0, change l'affichage.
+            if ((minutes <= 0 && seconds <= 0)) {
+                clearInterval(x);
+                $('#time').css('display', 'none');
+                $('#timeTooLate').css('display', 'inline-block');
+                return;
+            }
 
-        // Affiche le texte
-        $('#time').text((("0" + minutes).slice(-2)) + ":" + (("0" + seconds).slice(-2)));
+            // Affiche le texte
+            $('#time').text((("0" + minutes).slice(-2)) + ":" + (("0" + seconds).slice(-2)));
 
-    }, 1000);
+        }, 1000);
+    }
 })
