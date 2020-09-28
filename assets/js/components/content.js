@@ -40,7 +40,6 @@ $().ready(() => {
 
         // Calcul la différence entre les 2 dates
         const distance = countDownDate - now;
-        console.log(countDownDate > now);
 
         // Calcule pour les différentes unités de temps
         // const days = Math.floor(distance / (1000 * 60 * 60 * 24));
