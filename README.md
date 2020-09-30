@@ -12,8 +12,6 @@ L'objectif est de fournir un service minimaliste permettant de connaître le tem
 - Twig
 - Javascript
 - SASS
-- Tailwindcss
-- VueJS 3
 
 ## License
 Projet sous licence APACHE 2.0
