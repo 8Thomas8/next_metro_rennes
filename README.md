@@ -5,6 +5,7 @@ Projet PHP Symfony Twig VueJS Tailwindcss - Connaître le temps restant avant l'
 
 ## Objectif
 L'objectif est de fournir un service minimaliste permettant de connaître le temps restant avant l'arrivée du prochain métro STAR pour une station donnée, via l'API https://data.explore.star.fr/explore/dataset/tco-metro-circulation-passages-tr/api/.
+Responsive non géré volontairement, ce n'est pas le but ici.
 
 ## Technologies
 - PHP
